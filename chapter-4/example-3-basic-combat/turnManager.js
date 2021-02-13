@@ -8,6 +8,7 @@ const tm = {
     },
     currentIndex: 0,
     turn: () => {
+
         if (tm.entities.size > 0) {
             let entities = [...tm.entities]
             let e = entities[tm.currentIndex]

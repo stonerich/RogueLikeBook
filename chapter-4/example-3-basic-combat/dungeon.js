@@ -69,7 +69,7 @@ let dungeon = {
             x: this.map.tileToWorldX(x),
             y: this.map.tileToWorldY(y),
             ease: "Power2",
-            duration: 100
+            duration: 25
         })        
     },
     distanceBetweenEntities: function(e1, e2) {
@@ -111,7 +111,7 @@ let dungeon = {
             ease: "Power2",
             hold: 20,
             duration: 80,
-            delay: attacker.tweens * 200,
+            delay: attacker.tweens * 100,
             yoyo: true
         })  
     }

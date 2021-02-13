@@ -4,7 +4,7 @@ export default class BasicMonster {
     constructor(x, y) {
         this.name = "A Dangerous Monster"
         this.movementPoints = 1
-        this.actionPoints = 3
+        this.actionPoints = 1
         this.healthPoints = 1
         this.x = x
         this.y = y
@@ -14,8 +14,8 @@ export default class BasicMonster {
 
     refresh() {
         this.movementPoints = 1
-        this.actionPoints = 3
-    }
+        this.actionPoints = 2
+    } 
 
     attack() {
         return 1

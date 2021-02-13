@@ -11,12 +11,17 @@ export default class PlayerCharacter {
         this.y = y 
         this.tile = 29
         this.moving = false
-
+        this.wantPause = false
         dungeon.initializeEntity(this)
     }
 
+    setWantPause() {
+        console.log("Want Pause", this)
+        this.wantPause = true
+    }
+
     refresh() {
-        this.movementPoints = 1
+        this.movementPoints = 2
         this.actionPoints = 1
     }
 
@@ -52,21 +57,27 @@ export default class PlayerCharacter {
                 moved = true
             }
 
+            if (this.wantPause) {
+                moved = true;
+                this.wantPause = false;
+            }
+
+
             if (moved) {
                 this.movementPoints -= 1
-
-                if (!dungeon.isWalkableTile(newX, newY)) {
-                    let enemy = dungeon.entityAtTile(newX, newY)
-
-                    if (enemy && this.actionPoints > 0) {
-                        dungeon.attackEntity(this, enemy)
-                        this.actionPoints -= 1
-                    }
-
-                    newX = oldX
-                    newY = oldY
-                }
                 if (newX !== oldX || newY !== oldY) {
+
+                    if (!dungeon.isWalkableTile(newX, newY)) {
+                        let enemy = dungeon.entityAtTile(newX, newY)
+
+                        if (enemy && this.actionPoints > 0) {
+                            dungeon.attackEntity(this, enemy)
+                            this.actionPoints -= 1
+                        }
+
+                        newX = oldX
+                        newY = oldY
+                    }
                     dungeon.moveEntityTo(this, newX, newY)
                 }
             }

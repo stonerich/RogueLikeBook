@@ -17,6 +17,9 @@ const scene = {
         tm.addEntity(new BasicMonster(76,10))
         tm.addEntity(new BasicMonster(29,24))
         tm.addEntity(new BasicMonster(29,20))
+
+        this.input.keyboard.on('keyup_SPACE', 
+          () => dungeon.player.setWantPause(), dungeon.player)
     },
     update: function () {
         if (tm.over()) {
